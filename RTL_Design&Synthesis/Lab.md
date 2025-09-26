@@ -18,7 +18,11 @@ mkdir -p vsd/VLSI && cd vsd/VLSI
 ```bash
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop
 ```
-<img width="1622" height="1103" alt="Image" src="https://github.com/user-attachments/assets/8ecc81d1-518f-4c4c-9e5c-5a769344ca8b" />
+
+** Make sure to change your directory into `verilog_files` before running the upcoming commands, as this folder contains all the verilog files for the modules to be executed
+>
+>
+><img width="1622" height="1103" alt="Image" src="https://github.com/user-attachments/assets/8ecc81d1-518f-4c4c-9e5c-5a769344ca8b" />
 
 -----
 
