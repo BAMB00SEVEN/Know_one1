@@ -2,7 +2,7 @@
 
 -----
 
-# RTL Design & Synthesis Flow
+# RTL Design & Synthesis Flowhttps://github.com/BAMB00SEVEN/Know_one1/blob/main/RTL_Design&Synthesis/Theory.md#rtl-design--synthesis-flow
 
 This document outlines the fundamental steps in a typical digital design flow, from writing Register Transfer Level (RTL) code to synthesizing it into a gate-level netlist.
 
