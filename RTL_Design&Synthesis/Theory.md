@@ -2,7 +2,7 @@
 
 -----
 
-# RTL Design & Synthesis Flowhttps://github.com/BAMB00SEVEN/Know_one1/blob/main/RTL_Design&Synthesis/Theory.md#rtl-design--synthesis-flow
+# RTL Design & Synthesis Flow
 
 This document outlines the fundamental steps in a typical digital design flow, from writing Register Transfer Level (RTL) code to synthesizing it into a gate-level netlist.
 
@@ -83,7 +83,7 @@ To perform synthesis, the tool needs a catalogue of available logic gates. This 
   - It is a **collection of logical modules** (standard cells) like AND, OR, NOT, flip-flops, etc., for a specific technology (e.g., SKY130).
   - Crucially, it contains different "flavors" (e.g., slow, medium, fast) of the same gate with different performance characteristics.
 
-### Cell Flavors: The Need for Speed (and Sloth\!) 🐢💨
+### Cell Flavors: The Need for Speed (and Sloth\!) 
 
 Why does a library contain multiple versions of the same gate? It's all about balancing performance, power, and area by carefully managing timing.
 
