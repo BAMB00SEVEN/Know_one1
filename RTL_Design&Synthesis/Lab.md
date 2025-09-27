@@ -1,4 +1,5 @@
-
+###  MODULE --- 1
+------
 ## RTL Workflow: Simulation & Synthesis
 
 ### Objective
