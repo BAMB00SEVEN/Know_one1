@@ -1,9 +1,9 @@
 
+###  MODULE --- 3
+------
 
-### File 1: `theory.md`
 
-
-# Day 3 Theory: Circuit Optimization Techniques
+# Theory: Circuit Optimization Techniques
 
 Optimization is the process of automatically modifying a circuit to improve its performance, area, and power consumption without changing its core function. This section covers four powerful techniques synthesis tools use to make your design better.
 
