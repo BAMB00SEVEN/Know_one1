@@ -1,3 +1,6 @@
+###  MODULE --- 2
+------
+
 # Theory: Libraries, Synthesis, and Resets
 
 This guide covers the core concepts for turning RTL into a gate-level circuit: the cell datasheets (`.lib` files), the high-level build strategies (synthesis), and the design of state-holding elements (flip-flops).
