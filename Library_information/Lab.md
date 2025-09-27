@@ -24,6 +24,8 @@ Execute the following commands in your terminal to compile the design and its te
     gtkwave tb_dff_asyncres.vcd
     ```
 
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/d5f8bc05-b0f9-43d9-a740-d0fa75984c6f" />
+
 -----
 
 ## Part 2: Synthesis with Yosys
