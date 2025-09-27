@@ -1,42 +1,5 @@
 
-
-
-### File 2: `lab.md`
-
-````markdown
-# Day 2: Lab Workflow - Simulation and Synthesis
-
-This guide provides the step-by-step commands for simulating a flip-flop design using Icarus Verilog and synthesizing it into a gate-level netlist with Yosys.
-
----
-
-## Part 1: RTL Implementation and Simulation
-
-This section covers the creation of a Verilog module for a D-Flip-Flop with an asynchronous reset and its functional verification.
-
-### ► Step 1: Create the RTL File
-
-Create a file named `dff_asyncres.v` and add the following Verilog code. This design describes a D-type flip-flop that is triggered by the positive edge of the clock and reset by the positive edge of an asynchronous reset signal.
-
-```verilog
-// dff_asyncres.v
-module dff_asyncres (
-    input clk, 
-    input async_reset, 
-    input d, 
-    output reg q
-);
-  always @ (posedge clk, posedge async_reset)
-    if (async_reset)
-      q <= 1'b0;
-    else
-      q <= d;
-endmodule
-````
-
-> **Note:** You will also need a corresponding testbench file (e.g., `tb_dff_asyncres.v`) to drive the inputs (`clk`, `async_reset`, `d`) and observe the output `q`.
-
-### ► Step 2: Compile and Simulate with Icarus Verilog
+### ► Part 1: Compile and Simulate with Icarus Verilog
 
 Execute the following commands in your terminal to compile the design and its testbench, run the simulation, and generate a waveform file.
 
