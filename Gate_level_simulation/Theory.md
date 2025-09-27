@@ -1,7 +1,6 @@
 
 
-### File 1: `theory.md`
-# Day 4 Theory: Verification, Mismatches, and Verilog's Two Assignments
+### Verification, Mismatches, and Verilog's Two Assignments
 
 Today's theory focuses on what happens *after* synthesis. We'll explore how to verify the synthesized circuit, why it might not match your original design, and the single most common reason for such errors: the misuse of Verilog's assignment operators.
 
