@@ -2,6 +2,8 @@
 
 This repository is a collection of notes and hands-on labs exploring key concepts in digital logic design using Verilog. The focus is on writing clean, synthesizable code and understanding the journey from Register-Transfer Level (RTL) to an optimized gate-level netlist.
 
+Made by ::::: `#ff0000`Parth_Batra
+
 ---
 ## Key Topics Covered
 
