@@ -13,7 +13,14 @@ The filename `sky130_fd_sc_hd__tt_025C_1v80.lib` specifies a **PVT Corner**:
 * **Voltage (`1v80`)**: Assumes a **1.80V** power supply.
 * **Temperature (`025C`)**: Assumes an operating temperature of **25°C**.
 
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/422ee6b6-0b26-4140-9642-fa55037ca2c8" />
+
 Designs must be validated across various PVT corners to ensure they work reliably in the real world.
+
+** we can also see that for as the number of outputs is increasing in the selected nand gate the cells are getting wider and wider cells consume more area and power **
+
+
+><img width="2548" height="1458" alt="Image" src="https://github.com/user-attachments/assets/e4753faf-e2b1-4b81-97ff-936d87a22a13" />
 
 ---
 
@@ -29,6 +36,8 @@ Synthesis converts RTL into a gate-level netlist. The two primary strategies off
 | **Disadvantage** | Limited cross-module optimization. | Slow for large designs; hard to debug. |
 
 ---
+
+`The netlist for heirarchal synthesis looks like`
 
 ## 3. Flip-Flop Reset Types
 
