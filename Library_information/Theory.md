@@ -17,11 +17,13 @@ The filename `sky130_fd_sc_hd__tt_025C_1v80.lib` specifies a **PVT Corner**:
 
 Designs must be validated across various PVT corners to ensure they work reliably in the real world.
 
-** we can also see that for as the number of outputs is increasing in the selected nand gate the cells are getting wider and wider cells consume more area and power **
-
+**for finding your desired cell press `shift + :` , you will reach the command line of the editor andnthen type `/cell .*your_cell_name` , also you can use `vsp` command to split screen**
 
 ><img width="2548" height="1458" alt="Image" src="https://github.com/user-attachments/assets/e4753faf-e2b1-4b81-97ff-936d87a22a13" />
 
+**we can also see that for as the number of outputs is increasing in the selected nand gate the cells are getting wider and wider cells consume more area and power**
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/604f0789-c9e9-4e1a-837b-6a6521e8b03d" />
 ---
 
 ## 2. Synthesis Strategies
@@ -38,6 +40,16 @@ Synthesis converts RTL into a gate-level netlist. The two primary strategies off
 ---
 
 `The netlist for heirarchal synthesis looks like`
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/393904b6-5823-46bd-8286-2d2f86abfb41" />
+*here the heirarchy is maintained as there is a assignment of seperate modules*
+
+`The netlist of flattend synthesis looks like`
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/de99fc41-2125-49c9-abfe-9bc888390879" />
+*here we can see that everything came down to gate level*
+
+
 
 ## 3. Flip-Flop Reset Types
 
@@ -58,3 +70,5 @@ This reset is a planned event that waits for the next clock tick.
 * **Use Case**: Preferred for most internal logic to ensure predictable, synchronous behavior.
 * **Behavior**: The flip-flop only checks the value of the reset signal on the rising edge of the clock. The reset action is synchronized with the rest of the circuit's activity.
 * **Use Case**: Generally preferred for resets within a clocked logic block because it prevents timing issues and ensures predictable, synchronous behavior.
+
+
