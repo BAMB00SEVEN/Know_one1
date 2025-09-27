@@ -1,6 +1,6 @@
 
 
-
+### MODULE --- 5
 
 # Lab: Preventing Latches and Building Scalable Logic
 
@@ -144,7 +144,11 @@ module mux_for_loop (input [3:0] i, input [1:0] sel, output reg y);
         end
     end
 endmodule
+```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/6dbed977-34e9-4dfb-8e78-d490f3a2b7b0" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/ec1ebe9b-8659-4e88-b3e9-92d9c838524f" />
 
+```
 // Lab 7: 8-to-1 DEMUX with for loop
 module demux_for_loop (input [2:0] sel, input i, output reg [7:0] y);
     integer k;
@@ -156,6 +160,9 @@ module demux_for_loop (input [2:0] sel, input i, output reg [7:0] y);
     end
 endmodule
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/94080788-0bd8-40c9-9d1d-218c06813bbf" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/be4f6e4a-4efb-453f-9b36-9d191a5b05ea" />
+------
 
 ### ► Lab 8: 8-bit Ripple-Carry Adder with `generate`
 
@@ -185,6 +192,9 @@ module rca (input [7:0] a, b, output [8:0] sum);
     assign sum[8] = co[7]; // Final carry-out
 endmodule
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/85bda2fd-7f16-470b-87e2-f1174d30c0b9" />
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/5a6947ec-3173-4164-9927-353c4248b059" />
 
 > **Observation**: The `generate` block will create 7 instances of the `fa` module, named `fa_chain[1].u_fa`, `fa_chain[2].u_fa`, etc., automatically connecting the carry chain.
 
