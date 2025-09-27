@@ -1,5 +1,5 @@
 ###  MODULE --- 2
-------
+-----
 
 # Theory: Libraries, Synthesis, and Resets
 
