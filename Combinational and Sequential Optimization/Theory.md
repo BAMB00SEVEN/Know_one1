@@ -2,7 +2,7 @@
 
 ### File 1: `theory.md`
 
-```markdown
+
 # Day 3 Theory: Circuit Optimization Techniques
 
 Optimization is the process of automatically modifying a circuit to improve its performance, area, and power consumption without changing its core function. This section covers four powerful techniques synthesis tools use to make your design better.
@@ -47,7 +47,6 @@ Imagine one person trying to hand out flyers to a hundred people. It would be sl
 The functionality of the circuit remains identical, but the internal timing is improved. Think of it like shifting assembly line workers around. You don't change the tasks, but you reposition the workers to prevent bottlenecks and make the entire line faster.
 
 * **Goal**: To reduce the longest delay between any two registers, which allows the entire circuit to be run at a higher clock frequency.
-```
 
 -----
 
