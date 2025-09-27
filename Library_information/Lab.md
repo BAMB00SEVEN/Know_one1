@@ -72,6 +72,8 @@ The `dfflibmap` command specifically targets the generic DFF cells created by th
 dfflibmap -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
+><img width="3196" height="1703" alt="Image" src="https://github.com/user-attachments/assets/088099f4-97d1-4d41-be65-75901dd9ffa3" />
+
 ### ► Step 6: Perform Technology Mapping
 
 The `abc` command is a powerful logic synthesis and verification tool integrated into Yosys. It performs fine-grained technology mapping, taking the generic logic gates and optimizing them into the specific standard cells from the loaded library (`-liberty`), aiming to meet timing and area constraints.
@@ -88,5 +90,4 @@ The `show` command generates a visual representation of the current gate-level n
 show
 ```
 
-```
-```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/cb7c4915-aebb-4e4e-9afa-54c05504fb1d" />
