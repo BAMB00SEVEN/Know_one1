@@ -1,9 +1,8 @@
 
 
-### File 1: `theory.md`
 
 
-# Day 5 Theory: Latches, Logic, and Scalable Hardware
+#  Latches, Logic, and Scalable Hardware
 
 Today, we explore how to write robust and scalable Verilog. We'll cover the most common pitfall in combinational logic—the inferred latch—and then look at powerful language features like loops and generate blocks that let you build complex, repetitive hardware structures without repetitive coding.
 
