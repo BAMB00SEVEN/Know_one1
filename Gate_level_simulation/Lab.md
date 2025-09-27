@@ -1,8 +1,5 @@
 
-### File 2: `lab.md`
-
-
-# Day 4 Lab: Good vs. Bad RTL and Gate-Level Simulation
+# Lab: Good vs. Bad RTL and Gate-Level Simulation
 
 This lab will demonstrate the correct flow for Gate-Level Simulation (GLS) and highlight common RTL coding mistakes that lead to simulation-synthesis mismatches.
 
@@ -10,35 +7,26 @@ This lab will demonstrate the correct flow for Gate-Level Simulation (GLS) and h
 
 ## Part 1: Correct GLS Flow (Labs 1-3)
 
-Here, we will create a simple multiplexer, synthesize it, and run a gate-level simulation to verify it.
+Here, we will see a simple multiplexer, synthesize it, and run a gate-level simulation to verify it.
 
-### ► Step 1: Create the RTL
+### ► Step 1: Choose the RTL
 
-Create a Verilog file for a simple 2:1 MUX using a synthesizable continuous assignment.
+Choose a Verilog file for a simple 2:1 MUX using a synthesizable continuous assignment.
 
-```verilog
-// ternary_operator_mux.v
-module ternary_operator_mux (
-    input i0, 
-    input i1, 
-    input sel, 
-    output y
-);
-  assign y = sel ? i1 : i0;
-endmodule
-````
+><img width="2908" height="1271" alt="Image" src="https://github.com/user-attachments/assets/9fb67f8c-e1c9-4b08-9e6e-c50b68489580" />
 
 ### ► Step 2: Synthesize with Yosys
 
-Run the MUX through the standard Yosys synthesis flow to generate a gate-level netlist (e.g., `mux_netlist.v`).
+Run the MUX through the standard Yosys synthesis flow to generate a gate-level netlist (e.g., `my_ter_mux_gls.v`).
+
+**Note : you can give any name to the verilog file while writing it as i use "my" prefix for every netlist, here i used `my_ter_mux_gls.v`**
 
 ```bash
-# Yosys script/commands
 read_liberty -lib /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog ternary_operator_mux.v
 synth -top ternary_operator_mux
 abc -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
-write_verilog mux_netlist.v
+write_verilog my_ter_mux_gls.v
 ```
 
 ### ► Step 3: Run Gate-Level Simulation
@@ -46,10 +34,11 @@ write_verilog mux_netlist.v
 Use Icarus Verilog to compile the necessary files. The command includes the **gate definitions** (`primitives.v` and `sky130_fd_sc_hd.v`), your **synthesized netlist**, and your **testbench**.
 
 ```bash
-iverilog -o gls_sim.out /path/to/primitives.v /path/to/sky130_fd_sc_hd.v mux_netlist.v your_testbench.v
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v my_ter_mux_gls.v tb_ternary_operator_mux.v
+
 ```
 
-> **Note**: The simulation should pass, as the original RTL was clean and synthesizable.
+> **Note**: The simulation should pass, as the original RTL was clean and synthesizable. Also make sure to enter the correct path for simulation
 
 -----
 
