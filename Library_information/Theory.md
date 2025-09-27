@@ -1,4 +1,4 @@
-# Day 2 Theory: Libraries, Synthesis, and Resets
+# Theory: Libraries, Synthesis, and Resets
 
 This guide covers the core concepts for turning RTL into a gate-level circuit: the cell datasheets (`.lib` files), the high-level build strategies (synthesis), and the design of state-holding elements (flip-flops).
 
@@ -49,7 +49,7 @@ Synthesis converts RTL into a gate-level netlist. The two primary strategies off
 ><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/de99fc41-2125-49c9-abfe-9bc888390879" />
 *here we can see that everything came down to gate level*
 
-
+---
 
 ## 3. Flip-Flop Reset Types
 
