@@ -5,7 +5,7 @@ This lab will demonstrate the correct flow for Gate-Level Simulation (GLS) and h
 
 ---
 
-## Part 1: Correct GLS Flow (Labs 1-3)
+## Part 1: Correct GLS Flow (Lab 1)
 
 Here, we will see a simple multiplexer, synthesize it, and run a gate-level simulation to verify it.
 
@@ -37,16 +37,18 @@ Use Icarus Verilog to compile the necessary files. The command includes the **ga
 iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v my_ter_mux_gls.v tb_ternary_operator_mux.v
 
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/5abac324-01d1-4cb0-b3e0-92c0da1068fd" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/0dd4dd2d-995d-4626-b83f-f8ecf2890876" />
 
 > **Note**: The simulation should pass, as the original RTL was clean and synthesizable. Also make sure to enter the correct path for simulation
 
 -----
 
-## Part 2: Common RTL Pitfalls (Labs 4-7)
+## Part 2: Common RTL Pitfalls (Lab 2)
 
 These labs showcase incorrect coding styles and their consequences.
 
-### ► Pitfall 1: Bad Combinational Logic (Lab 4 & 5)
+### ► Pitfall 1: Bad Combinational Logic 
 
 This MUX is coded using an `always` block, but with two critical errors.
 
@@ -62,6 +64,7 @@ module bad_mux (input i0, input i1, input sel, output reg y);
   end
 endmodule
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/949acc33-ccee-4960-93a1-6a04d1c61aec" />
 
 **The Fix:**
 
@@ -79,8 +82,9 @@ always @ (*) begin
     y = i0;
 end
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/8d2596a0-ec10-4a0e-86b8-9ed4b3f7a0bc" />
 
-### ► Pitfall 2: Blocking Assignment Order (Lab 6 & 7)
+### ► Pitfall 2: Blocking Assignment Order (Lab 3)
 
 The order of execution matters for blocking assignments.
 
@@ -95,6 +99,8 @@ module blocking_caveat (input a, input b, input c, output reg d);
   end
 endmodule
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/e4b0d47e-9a52-4e22-a6f3-e8cc24889d6d" />
+
 
 **The Fix:**
 Ensure that intermediate signals are calculated *before* they are used within the same block.
@@ -106,8 +112,10 @@ always @ (*) begin
   d = x & c; // Then use the new 'x' to calculate 'd'
 end
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/140dc6ea-85fc-4524-a535-9a033d34f30d" />
 
-> **Key Takeaway**: These "bad" examples will often simulate one way in RTL and synthesize into something completely different, leading to a failed Gate-Level Simulation. Always follow the golden rules of assignment.
+
+**Key Takeaway**: These "bad" examples will often simulate one way in RTL and synthesize into something completely different, leading to a failed Gate-Level Simulation. Always follow the golden rules of assignment.
 
 ```
 ```
