@@ -1,8 +1,8 @@
 
-### File 2: `lab.md`
 
 
-# Day 5 Lab: Preventing Latches and Building Scalable Logic
+
+# Lab: Preventing Latches and Building Scalable Logic
 
 This lab is split into two parts. First, we will deliberately write code that infers latches and then fix it. Second, we will use loops and generate blocks to build scalable multiplexers, demultiplexers, and a Ripple-Carry Adder.
 
@@ -14,9 +14,9 @@ For each lab, use the standard Yosys synthesis flow to generate and view the net
 
 ---
 
-## Part 1: Latch Inference and Prevention (Labs 1-8)
+## Part 1: Latch Inference and Prevention (Labs 1-5 )
 
-### ► Lab 1 & 3: Incomplete `if` Statements
+### ► Lab 1 & 2: Incomplete `if` Statements
 
 This code fails to specify what `y` should be if the `if` or `else if` conditions are false.
 
@@ -27,8 +27,12 @@ always @(*) begin
     if (i0) y = i1; // What happens if i0 is 0? -> Latch!
 end
 endmodule
+```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/dc7501de-f0e8-4a41-ac46-424f4eb06655" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/950d8333-9b92-4292-a4a0-ec877fca5ee5" />
 
-// Lab 3: Incomplete nested if-else
+```
+// Lab 2: Incomplete nested if-else
 module incomp_if2 (input i0, i1, i2, i3, output reg y);
 always @(*) begin
     if (i0) y = i1;
@@ -36,10 +40,14 @@ always @(*) begin
 end
 endmodule
 ````
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/f7c2a433-0160-4fe7-a1ba-9d921433f6ca" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/2fbc08fd-6295-46fd-b1af-a74e6491b89b" />
 
 > **Observation**: Yosys will infer a latch for `y` and issue a warning.
 
-### ► Lab 5: The Correct `case` Statement
+---
+
+### ► Lab 3: The Correct `case` Statement
 
 This module correctly assigns a value to `y` in all conditions using a `default` case.
 
@@ -55,14 +63,20 @@ end
 endmodule
 ```
 
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/976ee307-31e8-42c0-80e7-82e530406c8c" />
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/35942559-0f7a-49be-a2f4-5443bd516576" />
+
+
+
 > **Observation**: This synthesizes cleanly to a MUX with no warnings.
 
-### ► Lab 7 & 8: Subtle Latch Inference in `case`
+### ► Lab 4 & 5: Subtle Latch Inference in `case`
 
 Even `case` statements can infer latches if not all outputs are assigned in all branches.
 
 ```verilog
-// Lab 7: Incomplete case (missing sel=2'b11)
+// Lab 4: Incomplete case (missing sel=2'b11)
 module bad_case (input i0, i1, i2, [1:0] sel, output reg y);
 always @(*) begin
     case(sel)
@@ -74,17 +88,41 @@ always @(*) begin
 end
 endmodule
 
-// Lab 8: Partial assignment
-module partial_case_assign (input i0, i1, i2, [1:0] sel, output reg y, x);
-always @(*) begin
-    case(sel)
-        2'b00: begin y = i0; x = i2; end
-        2'b01: y = i1; // 'x' is not assigned -> Latch on x!
-        default: begin y = i2; x = i1; end
-    endcase
-end
+```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/f0dc3fe6-ac85-49f9-922e-7649664f566f" />
+
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/806b7cb2-61ba-4067-8a96-1ebf589b229b" />
+
+```verilog
+// Lab 5: Partial assignment in case(A bad_case)
+module partial_case_assign (
+    input i0, i1, i2,
+    input [1:0] sel,
+    output reg y,
+    output reg x
+);
+    always @(*) begin
+        case(sel)
+            2'b00: begin
+                y = i0;
+                x = i2;
+            end
+            2'b01: begin
+                y = i1; // 'x' is not assigned here -> Latch on x!
+            end
+            default: begin
+                y = i2;
+                x = i1;
+            end
+        endcase
+    end
 endmodule
 ```
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/1879e974-b7b6-4ccf-ab3d-68e505bec2d3" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/df9e38ff-5453-4fcb-8946-529b2e472531" />
+><img width="3199" height="1999" alt="Image" src="https://github.com/user-attachments/assets/eeaf8979-4053-4988-830b-87e9ab92214b" />
+
+
 
 > **Fix**: Always include a `default` case or ensure every possible value of the `case` selector is covered. For partial assignments, assign a default value to all outputs at the beginning of the `always` block.
 
@@ -92,12 +130,12 @@ endmodule
 
 ## Part 2: Scalable Design with Loops and Generate (Labs 9-12)
 
-### ► Lab 9 & 11: MUX/DEMUX with `for` Loop
+### ► Lab 6 & 7: MUX/DEMUX with `for` Loop
 
 A `for` loop is an elegant way to describe the behavior of a MUX or DEMUX.
 
 ```verilog
-// Lab 9: 4-to-1 MUX with for loop
+// Lab 6: 4-to-1 MUX with for loop
 module mux_for_loop (input [3:0] i, input [1:0] sel, output reg y);
     integer k;
     always @(*) begin
@@ -107,7 +145,7 @@ module mux_for_loop (input [3:0] i, input [1:0] sel, output reg y);
     end
 endmodule
 
-// Lab 11: 8-to-1 DEMUX with for loop
+// Lab 7: 8-to-1 DEMUX with for loop
 module demux_for_loop (input [2:0] sel, input i, output reg [7:0] y);
     integer k;
     always @(*) begin
@@ -119,7 +157,7 @@ module demux_for_loop (input [2:0] sel, input i, output reg [7:0] y);
 endmodule
 ```
 
-### ► Lab 12: 8-bit Ripple-Carry Adder with `generate`
+### ► Lab 8: 8-bit Ripple-Carry Adder with `generate`
 
 A `generate` block is perfect for creating the repetitive structure of an RCA.
 
@@ -129,7 +167,7 @@ module fa (input a, b, c, output co, sum);
     assign {co, sum} = a + b + c;
 endmodule
 
-// Lab 12: 8-bit RCA
+// Lab 8: 8-bit RCA
 module rca (input [7:0] a, b, output [8:0] sum);
     wire [7:0] co; // Internal carry wires
 
