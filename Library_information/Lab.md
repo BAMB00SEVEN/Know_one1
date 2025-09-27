@@ -1,3 +1,5 @@
+###  MODULE --- 2
+------
 
 ### ► Part 1: Compile and Simulate with Icarus Verilog
 
