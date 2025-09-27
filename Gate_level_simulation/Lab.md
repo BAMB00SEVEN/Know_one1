@@ -1,3 +1,5 @@
+###  MODULE --- 4
+------
 
 # Lab: Good vs. Bad RTL and Gate-Level Simulation
 
